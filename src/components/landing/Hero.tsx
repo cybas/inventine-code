@@ -20,9 +20,6 @@ export function Hero() {
               <Link href="/#services">See services</Link>
             </Button>
           </div>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Built on Firebase + Gemini. Enterprise-ready.
-          </p>
         </div>
       </div>
     </section>
