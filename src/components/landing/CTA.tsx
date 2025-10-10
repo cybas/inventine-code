@@ -13,7 +13,7 @@ export function CTA() {
             Let’s map the fastest path to value.
           </p>
           <div className="mt-8">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg">
               <Link href="/contact">Start a project</Link>
             </Button>
           </div>

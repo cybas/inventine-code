@@ -13,7 +13,7 @@ export function Hero() {
             We build pragmatic systems—LLM/AI workflows, storefronts, and data operations—integrated with your ERP, HR, and accounting. Less noise, more outcomes.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg">
               <Link href="/contact">Start a project</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
