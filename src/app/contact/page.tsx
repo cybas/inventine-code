@@ -1,71 +1,13 @@
+
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
-import { submitContactForm } from "./actions";
-import React from "react";
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  company: z.string().optional(),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-});
+import { Header } from "@/components/landing/Header";
+import Link from "next/link";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      message: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    const result = await submitContactForm(values);
-
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. We'll get back to you shortly.",
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: result.message || "There was a problem with your request.",
-      });
-    }
-    setIsSubmitting(false);
-  }
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -73,74 +15,46 @@ export default function ContactPage() {
       <main className="flex-1">
         <section className="w-full py-20 md:py-32">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-3xl md:text-5xl font-bold font-headline">Contact Us</h1>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Have a project in mind? Let's talk.
-              </p>
+             <div className="max-w-3xl mx-auto">
+                <Breadcrumb>
+                    <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink asChild>
+                        <Link href="/">Home</Link>
+                        </BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>Contact</BreadcrumbPage>
+                    </BreadcrumbItem>
+                    </BreadcrumbList>
+                </Breadcrumb>
+                <div className="mt-6 text-center">
+                    <h1 className="text-3xl md:text-5xl font-bold font-headline">Let’s Connect to Transform Your Business</h1>
+                    <p className="mt-4 text-lg text-muted-foreground">
+                        We’re here to answer your questions and help you explore AI and IT solutions tailored to your needs. Whether you’re ready to start a project or simply want to learn more about what we can do for your business, reach out to us today. Let’s collaborate and make your vision a reality!
+                    </p>
+                </div>
             </div>
-            <div className="max-w-2xl mx-auto mt-12">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your Name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="your.email@example.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Company (Optional)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your Company" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Tell us about your project..." {...field} rows={6} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              </Form>
+
+            <div className="max-w-4xl mx-auto mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div className="flex flex-col items-center gap-4">
+                        <Phone className="h-8 w-8 text-primary" />
+                        <h3 className="text-xl font-bold">Phone</h3>
+                        <a href="tel:+919052134853" className="text-muted-foreground hover:text-primary">+91 90521 34853</a>
+                    </div>
+                    <div className="flex flex-col items-center gap-4">
+                        <Mail className="h-8 w-8 text-primary" />
+                        <h3 className="text-xl font-bold">Email</h3>
+                        <a href="mailto:info@codinvo.com" className="text-muted-foreground hover:text-primary">info@codinvo.com</a>
+                    </div>
+                    <div className="flex flex-col items-center gap-4">
+                        <MapPin className="h-8 w-8 text-primary" />
+                        <h3 className="text-xl font-bold">Address</h3>
+                        <p className="text-muted-foreground">10-1-13/2, Asilmetta, Visakhapatnam - 530003 Andhra Pradesh, India</p>
+                    </div>
+                </div>
             </div>
           </div>
         </section>
