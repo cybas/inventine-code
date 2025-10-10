@@ -18,6 +18,9 @@ export function Header() {
           <Button asChild variant="ghost" className="hidden md:flex text-muted-foreground hover:text-foreground">
             <Link href="/#services">Services</Link>
           </Button>
+          <Button asChild variant="ghost" className="hidden md:flex text-muted-foreground hover:text-foreground">
+            <Link href="/about">About Us</Link>
+          </Button>
           <Button asChild>
             <Link href="/contact">Start a project</Link>
           </Button>
