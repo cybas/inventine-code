@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code } from 'lucide-react';
@@ -16,7 +17,7 @@ export function Header() {
         <Logo />
         <nav className="flex items-center gap-2 sm:gap-4">
           <Button asChild variant="ghost" className="hidden md:flex text-muted-foreground hover:text-foreground">
-            <Link href="/#services">Services</Link>
+            <Link href="/services">Services</Link>
           </Button>
           <Button asChild variant="ghost" className="hidden md:flex text-muted-foreground hover:text-foreground">
             <Link href="/about">About Us</Link>

@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -17,7 +18,7 @@ export function Hero() {
               <Link href="/contact">Start a project</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/#services">See services</Link>
+              <Link href="/services">See services</Link>
             </Button>
           </div>
         </div>
