@@ -89,7 +89,7 @@ export default function Home() {
                 <p className="mt-2 text-muted-foreground">Driving Efficiency, Accuracy, and Growth</p>
               </div>
               <div>
-                <Image src="https://picsum.photos/seed/1/600/400" data-ai-hint="abstract technology" alt="AI Transformation" width={600} height={400} className="rounded-lg" />
+                <Image src="https://picsum.photos/seed/1/600/400" data-ai-hint="abstract technology" alt="AI Transformation" width={600} height={400} className="rounded-lg w-full h-auto" />
               </div>
             </div>
           </div>
